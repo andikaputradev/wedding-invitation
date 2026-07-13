@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-gold-primary: #d4af37;
+    --color-gold-soft: #f5d76e;
+    --color-gold-deep: #b8860b;
+    --color-champagne: #f7e7ce;
+    --color-ivory: #fff8e7;
+    --color-beige-warm: #e8d8b8;
+    --color-brown-soft: #6b4f2a;
+    --color-brown-deep: #2a1e12;
+    --color-soft-black: #0b0a08;
+    --color-charcoal: #15130f;
+
+    --bg-primary: #fff8e7;
+    --bg-secondary: #f7e7ce;
+    --text-primary: #2a1e12;
+    --text-secondary: #6b4f2a;
+    --text-muted: #8b6e4a;
+    --border-color: rgba(212, 175, 55, 0.3);
+    --card-bg: rgba(255, 248, 231, 0.8);
+    --card-border: rgba(212, 175, 55, 0.2);
+    --shadow-color: rgba(212, 175, 55, 0.12);
+    --glow-color: rgba(212, 175, 55, 0.15);
+  }
+
+  .dark {
+    --bg-primary: #0b0a08;
+    --bg-secondary: #15130f;
+    --text-primary: #fff8e7;
+    --text-secondary: #f7e7ce;
+    --text-muted: #c4a882;
+    --border-color: rgba(212, 175, 55, 0.2);
+    --card-bg: rgba(21, 19, 15, 0.85);
+    --card-border: rgba(212, 175, 55, 0.15);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --glow-color: rgba(212, 175, 55, 0.1);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: rgba(212, 175, 55, 0.3);
+    color: var(--text-primary);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gold-deep);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-primary);
+  }
+}
+
+@layer components {
+  .gold-text {
+    background: linear-gradient(
+      135deg,
+      #d4af37 0%,
+      #f5d76e 45%,
+      #d4af37 60%,
+      #b8860b 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-shimmer-text {
+    background: linear-gradient(
+      90deg,
+      #b8860b 0%,
+      #d4af37 25%,
+      #f5d76e 50%,
+      #d4af37 75%,
+      #b8860b 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .card-glass {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .section-padding {
+    padding-left: clamp(1.25rem, 5vw, 3rem);
+    padding-right: clamp(1.25rem, 5vw, 3rem);
+  }
+
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-gold-primary),
+      transparent
+    );
+    opacity: 0.5;
+  }
+
+  .ornament-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ornament-line::before,
+  .ornament-line::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-gold-primary),
+      transparent
+    );
+    opacity: 0.4;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
